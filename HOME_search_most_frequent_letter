@@ -1,0 +1,15 @@
+def checkio(a):
+    b = {}
+    c = []
+    d = []
+    a = a.lower()
+    for i in a:
+        if i.isalpha():
+            b[i.lower()]=a.count(i)
+    c = b.values()
+    for k, v in b.items():
+        if v == max(c):
+            d.append(k)
+        #print k,"-->",v
+    d.sort()
+    return d[0]
