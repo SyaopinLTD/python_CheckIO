@@ -1,0 +1,7 @@
+def checkio(aaa):
+    bbb = []
+    for j in aaa:
+        if aaa.count(j) != 1:
+            bbb.append(j)
+    return bbb
+print checkio([1, 3, 4, 3, 5, 4, 2, 6, 6, 10, 20, 20, 5, 1])
