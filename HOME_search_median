@@ -1,0 +1,8 @@
+def checkio(aaa):
+    aaa.sort()
+    med = 0.0
+    if len(aaa)%2 == 0:
+        med = (float(aaa[len(aaa)/2-1]) + float(aaa[len(aaa)/2]))/2
+    else:
+        med = float(aaa[len(aaa)/2])
+    return med
