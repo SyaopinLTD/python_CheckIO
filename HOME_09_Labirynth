@@ -1,0 +1,60 @@
+lab = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+    [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
+    [1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+
+def checkio(lab):
+    x = {(1,1):1}
+    y = (1,1)
+    xxx = [[(1,1)]]
+    finish = (10,10)
+    cur_x = 1
+    cur_y = 1
+    while finish not in x:
+        i = xxx[0]
+        cur_x = i[len(i)-1][0]
+        cur_y = i[len(i)-1][1]
+        if lab[cur_x+1][cur_y] == 0 and not (cur_x+1,cur_y) in x:
+            cur_path = i[:]
+            cur_path.append((cur_x+1,cur_y))
+            xxx.append(cur_path)
+            x[cur_x+1,cur_y] = 1
+        if lab[cur_x][cur_y+1] == 0 and not (cur_x,cur_y+1) in x: 
+            cur_path = i[:]
+            cur_path.append((cur_x,cur_y+1))
+            xxx.append(cur_path)
+            x[cur_x,cur_y+1] = 1
+        if lab[cur_x-1][cur_y] == 0 and not (cur_x-1,cur_y) in x: 
+            cur_path = i[:]
+            cur_path.append((cur_x-1,cur_y))
+            xxx.append(cur_path)
+            x[cur_x-1,cur_y] = 1
+        if lab[cur_x][cur_y-1] == 0 and not (cur_x,cur_y-1) in x: 
+            cur_path = i[:]
+            cur_path.append((cur_x,cur_y-1))
+            xxx.append(cur_path)
+            x[cur_x,cur_y-1] = 1
+        xxx.pop(0)
+    res = []
+    path = ""
+    for j in xxx:
+        if finish in j:
+            res = j
+            break
+    for k in res:
+        if k[0] > y[0]: path = path + "S"
+        if k[0] < y[0]: path = path + "N"
+        if k[1] > y[1]: path = path + "E"
+        if k[1] < y[1]: path = path + "W"
+        #print k, "--->", path
+        y = k
+    return path
