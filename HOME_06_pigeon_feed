@@ -1,0 +1,16 @@
+def checkio(k):
+    pigeon = {}
+    p = 0
+    sum = 0
+    while k>=0:
+        for i in range(len(pigeon)+1, len(pigeon)+p+1):
+            pigeon[i] = 0
+        p+=1
+        for j in range(1, len(pigeon)+1):
+            if k>0:
+                pigeon[j] = 1
+            k-=1        
+    for i in range(1, len(pigeon)+1):
+        if pigeon[i] == 1:
+            sum+=1
+    return sum
