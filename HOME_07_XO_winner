@@ -1,0 +1,49 @@
+def checkio(res):
+    xxx = 'XXX'
+    ooo = 'OOO'
+    d = 1
+    j = 0
+    tmp = []
+#check horizontally
+    for i in res:
+        if i == xxx:
+            d = 0
+            return "X"
+        elif i == ooo:
+            d = 0
+            return "O"
+#check vertically
+    while j < 3:
+        for i in res:
+            tmp.append(i[j])
+        x = ''.join(tmp)
+        if x == xxx:
+            d = 0
+            return "X"
+        if x == ooo:
+            d = 0
+            return "O"
+        j+=1
+        tmp = []
+#check diagonal
+    tmp = []
+    tmp1 = []
+    j = 0
+    k = 2
+    for i in res:
+        tmp.append(i[j])
+        tmp1.append(i[k])
+        j+=1
+        k-=1
+    x = ''.join(tmp)
+    y = ''.join(tmp1)
+    if x == xxx or y == xxx:
+        d = 0
+        return "X"
+    if x == ooo or y == ooo:
+        d = 0
+        return "O"
+    if d == 1:
+        return "D"
+d = checkio(["X.O","XOX","OXO"])
+print d
