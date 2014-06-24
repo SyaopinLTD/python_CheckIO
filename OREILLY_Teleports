@@ -17,3 +17,31 @@ i = i[::-1]
 #path.remove('34')
 print i, i in path
 print path
+
+
+==============================
+
+
+map = "12,23,27,31,34,35,45,56,58,67,68"
+height_visit = {'1': 1, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0}
+path = map.split(",")
+print path
+matrix = []
+for x in range(8):
+    matrix.append(["O"]*8)
+
+def matrix_fill(m,n):     #m - path, n - matrix
+    for i in range (1,9):
+        for j in m:
+            j1 = int(j)/10
+            j2 = int(j)%10
+            if i == j1 or i == j2:
+                n[j1-1][j2-1]="X"
+                n[j2-1][j1-1]="X"
+    return n
+matrix = matrix_fill(path,matrix)
+
+for i in matrix[0]:
+    if i == 'X':
+print matrix
+#def find_cycle(m):  #m - visited heights
