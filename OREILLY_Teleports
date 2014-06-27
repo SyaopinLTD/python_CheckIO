@@ -25,6 +25,7 @@ print path
 map = "12,23,27,31,34,35,45,56,58,67,68"
 height_visit = {'1': 1, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0}
 path = map.split(",")
+final = ['1']
 print path
 matrix = []
 for x in range(8):
@@ -41,7 +42,22 @@ def matrix_fill(m,n):     #m - path, n - matrix
     return n
 matrix = matrix_fill(path,matrix)
 
-for i in matrix[0]:
-    if i == 'X':
-print matrix
-#def find_cycle(m):  #m - visited heights
+def print_matrix(m):  #matrix
+    for i in m:
+        print i
+
+def find_cycle(m, n, o):  #m - visited heights , n - final, o -matrix
+    for i in n:
+        print "Before:"
+        print_matrix(o)
+        j = o[int(i)-1].index('X')
+        o[int(i)-1][j]='O'
+        o[j][int(i)-1]='O'
+        #print i,"  row: ",matrix[int(i)-1]," index of X ", j
+    n.append(str(j+1))
+    print "After:"
+    print_matrix(o)
+    print n
+        
+
+find_cycle(height_visit, final, matrix)
