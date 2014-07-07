@@ -1,0 +1,13 @@
+fibo=(1,2,3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946)
+age=0
+opacity=10000
+x=9990
+while opacity !=x:
+    age+=1
+    if age in fibo:
+        opacity=opacity-age
+    else:
+        opacity=opacity+1
+    print "age: ",age," opacity: ", opacity
+print fibo
+print age
