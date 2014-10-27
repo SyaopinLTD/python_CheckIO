@@ -1,0 +1,17 @@
+import cx_Oracle as db
+try:
+    aaa = "scott/tiger@10.202.62.101:1521/testbed"
+    conn = db.connect(aaa)
+except  db.DatabaseError, err:
+    print 'DB Error: ', err
+    sys.exit()
+cur = conn.cursor()
+#ret = cur.var(db.CURSOR)
+cur.execute('''SELECT t.ename, t.job, t.sal||' $' as BABLO2500
+               FROM emp t where t.sal >2500''')
+print cur.fetchall()
+
+'''for row in cur:
+    print row'''
+    
+conn.close()
