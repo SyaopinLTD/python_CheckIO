@@ -1,0 +1,19 @@
+create table TEST2
+(Idx number,
+Nm varchar2(10)
+);
+
+insert into test2 values(1, 'Moscow');
+insert into test2 values(2, 'St.Peter');
+insert into test2 values(3, 'Kazan');
+
+alter table test2 rename to Cities
+
+create table Person(
+Nm varchar2(10),
+CityID number);
+
+insert into person values('Andrew', 1);
+insert into person values('Leonid', 2);
+insert into person values('Sergey', 1);
+insert into person values('Grigoriy', 4);
